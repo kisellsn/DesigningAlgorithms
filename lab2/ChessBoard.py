@@ -1,7 +1,7 @@
 import random
 from queue import Queue, PriorityQueue
 from time import time
-from state import State
+from lab2.state import State
 
 
 class ChessBoard:

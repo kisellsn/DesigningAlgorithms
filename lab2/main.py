@@ -1,5 +1,5 @@
 import sys
-from ChessBoard import ChessBoard
+from lab2.ChessBoard import ChessBoard
 
 queens_input = 0
 algo = 0

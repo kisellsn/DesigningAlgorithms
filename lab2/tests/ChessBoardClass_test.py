@@ -1,7 +1,6 @@
 from unittest import TestCase
-from ChessBoard import ChessBoard
-from state import State
-
+from lab2.state import State
+from lab2.ChessBoard import ChessBoard
 
 class TestBoard(TestCase):
   def setUp(self):
