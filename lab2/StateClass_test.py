@@ -1,5 +1,5 @@
 from unittest import TestCase
-from lab2.state import State
+from state import State
 
 class TestState(TestCase):
   def setUp(self):
