@@ -9,24 +9,22 @@ class ChessBoard:
         self._n = n
 
     def input_queens(self):
-        try:
-            while True:
-                s = input(f"Enter {self._n} queens in format '1 1 1 1 1 1 1 1': ")
-                condition = True
-                queens = list(map(int, s.split()))
-                for num in queens:
-                    if int(num) >= self._n:
-                        condition = False
+        while True:
+            s = input(f"Enter {self._n} queens in format '1 1 1 1 1 1'(from 0 to {self._n-1}): ")
+            condition = True
+            queens = s.split()
+            for num in queens:
+                if not num.isdigit():
+                    condition = False
+                elif int(num) >= self._n:
+                    condition = False
 
-                if len(s.replace(' ', '')) == self._n and condition:
-                    break
-            queens = list(map(int, s.split()))
-            state = State(queens)
-            return state
+            if len(s.replace(' ', '')) == self._n and condition:
+                break
+        queens = list(map(int, s.split()))
+        state = State(queens)
+        return state
 
-        except ValueError:
-            print('Wrong input')
-            exit()
 
     def generate_queens(self):
         queens = [random.randint(0, self._n - 1) for x in range(self._n)]

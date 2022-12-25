@@ -3,12 +3,11 @@ from ChessBoard import ChessBoard
 
 queens_input = 0
 algo = 0
-size = 0
-while size > 20 or size < 4:
-    try:
-        size = int(input('Enter board size (min: 4, max: 20): '))
-    except ValueError:
-        sys.exit('Type number!')
+size = input('Enter board size (min: 4, max: 20): ')
+
+while not size.isdigit() or (int(size) > 20 or int(size) < 4 ):
+    size = input('Enter board size (min: 4, max: 20): ')
+size = int(size)
 
 while queens_input != '1' and queens_input != '2':
     queens_input = input('Do you want to input or generate queens:\n1 - input\n2 - generate\n')
