@@ -1,5 +1,8 @@
 # lab4
 
+Для запуску програми і тестів потрібно встановити бібліотеку numpy:
+    * ``pip install numpy``
+    
 1. Запуск програми
     * Клонуйте репозиторій та перейдіть на гілку feature/lab4-0001 за допомогою команди у терміналі:
         * ``git clone https://github.com/kisellsn/pa_lab.git -b feature/lab4-0001``
