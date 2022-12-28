@@ -14,7 +14,7 @@ class AntColony(object):
         self.decay = decay
         self.alpha = alpha
         self.beta = beta
-        self.Lmin = self.gen_path_distance(self.gen_path(0)) #
+        self.Lmin = self.gen_path_distance(self.gen_path(0,True)) #calc of the ideal solution price by a greedy algo
 
     def run(self):
         shortest_path = None
@@ -44,13 +44,16 @@ class AntColony(object):
             total_dist += self.distances[ele]
         return total_dist
 
-    def gen_path(self, start):
+    def gen_path(self, start,condition=False):
         path = []
         visited = set()
         visited.add(start)
         prev = start
         for i in range(len(self.distances) - 1):
-            move = self.pick_move(self.pheromone[prev], self.distances[prev], visited)
+            if condition:
+                move = self.pick_move_only_dist(self.pheromone[prev], self.distances[prev], visited)
+            else:
+                move = self.pick_move(self.pheromone[prev], self.distances[prev], visited)
             path.append((prev, move))
             prev = move
             visited.add(move)
@@ -63,11 +66,20 @@ class AntColony(object):
             for move in path:
                 self.pheromone[move] += self.Lmin / self.distances[move]
 
-
     def pick_move(self, pheromone, dist, visited):
         pheromone = np.copy(pheromone)
         pheromone[list(visited)] = 0
         row = pheromone ** self.alpha * (( 1.0 / dist) ** self.beta)
         norm_row = row / row.sum()
         move = np_choice(self.all_inds, 1, p=norm_row)[0]
+        return move
+
+    def pick_move_only_dist(self, pheromone, dist, visited):
+        pheromone = np.copy(pheromone)
+        for el in pheromone:
+            el=1
+        pheromone[list(visited)] = 0
+        row = pheromone ** self.alpha * (( 1.0 / dist) ** self.beta)
+        norm_row = row / row.sum()
+        move = np.argmax(norm_row)
         return move
