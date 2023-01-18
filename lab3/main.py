@@ -65,7 +65,7 @@ class App(customtkinter.CTk):
         self.execute_button.grid(row=3, column=0, columnspan=2, sticky="we")
 
         self.info_area = customtkinter.CTkTextbox(self)
-        self.info_area.insert("0.0", "Loading...")
+        self.info_area.insert("0.0", "Waiting...")
         self.info_area.configure(state="disabled")
         self.info_area.grid(row=4, column=0, columnspan=2, padx=5, pady=5, sticky="snwe")
 
@@ -88,6 +88,9 @@ class App(customtkinter.CTk):
         if action_value:
             if action_value == "insert":
                 key_to_insert = self.key_entry.get()
+                if not key_to_insert.isdigit():
+                    self.insert_area(self.info_area,'key must be digit')
+                    return 0
                 value_to_insert = self.value_entry.get()
 
                 record_to_insert = f"{key_to_insert}, {value_to_insert}"
@@ -100,8 +103,11 @@ class App(customtkinter.CTk):
                     self.insert_area(self.info_area,
                                  f"Record with key {key_to_insert} is already exist")
             elif action_value == "delete":
-                key_to_delete = int(self.key_entry.get())
-                res=self.di.delete(key_to_delete)
+                key_to_delete = self.key_entry.get()
+                if not key_to_delete.isdigit():
+                    self.insert_area(self.info_area,'key must be digit')
+                    return 0
+                res=self.di.delete(int(key_to_delete))
 
                 self.di.build_index()
                 if res ==1:
@@ -111,10 +117,13 @@ class App(customtkinter.CTk):
                     self.insert_area(self.info_area,
                                  f"Not founded record with key {key_to_delete}")
             elif action_value == "update":
-                key_to_update = int(self.key_entry.get())
+                key_to_update = self.key_entry.get()
+                if not key_to_update.isdigit():
+                    self.insert_area(self.info_area,'key must be digit')
+                    return 0
                 value_to_update = self.value_entry.get()
 
-                res=self.di.update(key_to_update, value_to_update)
+                res=self.di.update(int(key_to_update), value_to_update)
                 self.di.build_index()
 
                 if res ==1:
@@ -125,10 +134,13 @@ class App(customtkinter.CTk):
                                  f"Not founded record with key {key_to_update}")
 
             elif action_value == "find":
-                key_to_find = int(self.key_entry.get())
+                key_to_find = self.key_entry.get()
+                if not key_to_find.isdigit():
+                    self.insert_area(self.info_area,'key must be digit')
+                    return 0
                 print(key_to_find)
 
-                found_value = self.di.search(key_to_find)
+                found_value = self.di.search(int(key_to_find))
                 print(found_value)
                 if found_value:
                     self.insert_area(self.info_area, "The founded record is:\n"

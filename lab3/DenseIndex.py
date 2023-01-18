@@ -1,6 +1,6 @@
 import fileinput
 import os
-
+import math
 class DenseIndex:
     def __init__(self, data_file, index_file):
         self.data_file = data_file
@@ -29,12 +29,12 @@ class DenseIndex:
     def binary_search(self, search_key):
         with open(self.index_file, 'r') as i_file:
             i_file.seek(0)
-            mas=i_file.readlines()
+            mas = i_file.readlines()
             left = 0
-            right = len(mas)-1
+            right = len(mas) - 1
 
         while left <= right:
-            mid = (right + left)// 2
+            mid =int((right - left)/1.619031)+left
 
             current_line = mas[mid]
             key, offset = current_line.split(',')
@@ -49,11 +49,12 @@ class DenseIndex:
                 return offset
 
             elif key > search_key:
-                right = mid-1
+                right = mid - 1
 
             else:
-                left = mid+1
+                left = mid + 1
         return None
+
 
     def search(self, search_key):
         offset = self.binary_search(search_key)
@@ -133,5 +134,5 @@ if __name__ == '__main__':
     di = DenseIndex(data_file, index_file)
     di.build_index()
 
-    result = di.search(10)
+    result = di.insert('10, wert')
     print(result)
