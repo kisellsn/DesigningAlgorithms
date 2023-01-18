@@ -1,36 +1,13 @@
-# lab5
+# lab3
 
-Для запуску програми і тестів потрібно встановити бібліотеку scipy:
-    * ``pip install scipy``
+Для запуску програми і тестів потрібно встановити бібліотеку customtkinter:
+    * ``pip install customtkinter``
 
 1. Запуск програми
-    * Клонуйте репозиторій та перейдіть на гілку feature/lab5-0001 за допомогою команди у терміналі:
-        * ``git clone https://github.com/kisellsn/pa_lab.git -b feature/lab5-0001``
+    * Клонуйте репозиторій та перейдіть на гілку feature/lab3-0001 за допомогою команди у терміналі:
+        * ``git clone https://github.com/kisellsn/pa_lab.git -b feature/lab3-0001``
     * Перейдіть у папку репозиторія pa_lab, а з неї у папку lab5:
         * ``cd pa_lab``
-        * ``cd lab5``
+        * ``cd lab3``
     * Запустіть код за допомогою:
         * ``python main.py``
-
-
-Для запуску програми і тестів потрібно встановити бібліотеку numpy:
-    * ``pip install numpy``
-    
-1. Запуск програми
-    * Клонуйте репозиторій та перейдіть на гілку feature/lab4-0001 за допомогою команди у терміналі:
-        * ``git clone https://github.com/kisellsn/pa_lab.git -b feature/lab4-0001``
-    * Перейдіть у папку репозиторія pa_lab, а з неї у папку lab4:
-        * ``cd pa_lab``
-        * ``cd lab4``
-    * Запустіть код за допомогою:
-        * ``python main.py``
-
-2. Запуск тестів 
-    * Клонуйте репозиторій та перейдіть на гілку feature/lab4-0001 за допомогою команди у терміналі:
-        * ``git clone https://github.com/kisellsn/pa_lab.git -b feature/lab4-0001``
-    * Перейдіть у папку репозиторія pa_lab, а з неї у папку lab4:
-        * ``cd pa_lab``
-        * ``cd lab4``
-    * Запустіть код за допомогою:
-        * ``python -m unittest AntColonyClass_test``
-
